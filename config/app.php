@@ -179,6 +179,9 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Laravel\Passport\PassportServiceProvider::class,
+
+        Spatie\Fractal\FractalServiceProvider::class,
+
     ],
 
     /*
@@ -227,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Fractal' => Spatie\Fractal\FractalFacade::class,
     ],
 
 ];
