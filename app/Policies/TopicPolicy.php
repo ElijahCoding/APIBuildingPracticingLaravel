@@ -15,4 +15,9 @@ class TopicPolicy
       // return $user->id === $topic->user_id;
       return $user->ownsTopic($topic);
     }
+
+    public function destroy(User $user, Topic $topic)
+    {
+      return $user->ownsTopic($topic);
+    }
 }

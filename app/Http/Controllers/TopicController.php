@@ -57,7 +57,7 @@ class TopicController extends Controller
     public function update(UpdateTopicRequest $request, Topic $topic)
     {
       $this->authorize('update', $topic);
-      
+
       $topic->title = $request->get('title', $topic->title);
       $topic->save();
 
@@ -66,5 +66,14 @@ class TopicController extends Controller
            ->parseIncludes(['user'])
            ->transformWith(new TopicTransformer)
            ->toArray();
+    }
+
+    public function destroy(Topic $topic)
+    {
+      $this->authorize('destroy', $topic);
+
+      $topic->delete();
+
+      return response(null, 204);
     }
 }
