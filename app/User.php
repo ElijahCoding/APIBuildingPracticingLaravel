@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Topic;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -38,5 +39,10 @@ class User extends Authenticatable
    public function avatar()
    {
        return 'https://www.gravatar.com/avatar/' . md5($this->email) . '?s=45&d=mm';
+   }
+
+   public function ownsTopic(Topic $topic)
+   {
+     return $this->id === $topic->user_id;
    }
 }
