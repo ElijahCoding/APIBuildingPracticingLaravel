@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Topic;
+use App\{Topic, Post};
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -44,5 +44,10 @@ class User extends Authenticatable
    public function ownsTopic(Topic $topic)
    {
      return $this->id === $topic->user_id;
+   }
+
+   public function ownsPost(Post $post)
+   {
+     return $this->id === $post->user_id;
    }
 }
